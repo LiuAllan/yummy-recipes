@@ -7,7 +7,7 @@ const Router = () => (
 	<BrowserRouter>
 		<Switch>
 			<Route path="/" component={App} exact /> {/*only renders for this EXACT path only*/}
-			<Route path="/recipe/:name" component={Recipe} /> {/*takes a route variable*/}
+			<Route path="/recipe/:recipename" component={Recipe} /> {/*takes a route variable*/}
 		</Switch>
 	</BrowserRouter>
 );
