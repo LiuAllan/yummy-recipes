@@ -13,6 +13,7 @@ class App extends React.Component {
 	state = {
 		// recipes: null,
 		recipes: [],
+		resultsText: "",
 	}
 
 	//React 16, the constructor function and bind is removed. You can call the class methods normally and even declare states!
@@ -29,11 +30,12 @@ class App extends React.Component {
 		const data = await api_call.json();
 
 		this.setState({
-			recipes: data.hits
+			recipes: data.hits,
+			resultsText: `Results for ${recipeName}:`,
 		});
 		//Save to localStorage
-		saveState(this.state.recipes)
-		console.log(this.state.recipes);
+		saveState(this.state.recipes, "recipes");
+		saveState(this.state.resultsText, "resultsText");
 	}
 
 	
@@ -42,24 +44,27 @@ class App extends React.Component {
 		//Initial load of page
 		if(this.state.recipes.length === 0)
 		{
-			console.log("refreshed");
 
 			const recipeName = "random";
 			const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName}&app_id=${APP_ID}&app_key=${API_KEY}`);
 			const data = await api_call.json();
 
 			this.setState({
-				recipes: data.hits
+				recipes: data.hits,
+				resultsText: "Check out the featured recipes!"
 			});
 		}
 
 		//Get data from localStorage
 	    const json = localStorage.getItem("recipes");
+	    const resultsText = localStorage.getItem("resultsText");
 	    if(json) {
-	    	const recipes = JSON.parse(json)
+	    	const recipes = JSON.parse(json);
+	    	const searchText = JSON.parse(resultsText);
 
 	    	this.setState({
 	    		recipes: recipes,
+	    		resultsText: searchText,
 	    	})
 	    }
 	}
@@ -85,11 +90,17 @@ class App extends React.Component {
 		          			<h1 className="App-title">Yummy Recipes</h1>
 		        		</header>
 	        		</div>
-	        		<Form getRecipe={this.getRecipe}/>
-	        		<Recipes recipes={this.state.recipes} />
-	        		{/*
-	        		{this.state.recipes && <Recipes recipes={this.state.recipes}/>}
-	        		*/}
+	        		<div className="search-container">
+	        		<h3 className="search-container-heading">Search for some yummy recipes!</h3>
+	        			<Form getRecipe={this.getRecipe}/>
+	        		</div>
+	        		<div className="results">
+	        			<h5 className="results-heading">{this.state.resultsText}</h5>
+	        			<Recipes recipes={this.state.recipes} />
+		        		{/*
+		        		{this.state.recipes && <Recipes recipes={this.state.recipes}/>}
+		        		*/}
+		        	</div>
 	      		</div>
     	);
 	}

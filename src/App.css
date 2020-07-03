@@ -1,8 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
 
+:root
+{
+  --mainBackgroundColor: #f3f3f3;
+  --linkColor: #e74c3c !important;
+  --AppHeaderColor: #2c3e50;
+  --AppTitleColor: #00acee;
+  --AppTitleFrontColor: white;
+  --RecipesTitle: #e74c3c;
+  --formButtonOutline: #e74c3c;
+  --recipeButtonOutline: #e74c3c;
+  --buttonHoverColor: #FBF0F0;
+}
 
 body {
-  background:#f3f3f3;
+  background: var(--mainBackgroundColor);
+  font-family: 'Quicksand', sans-serif;
 }
 
 img {
@@ -20,7 +34,7 @@ button:focus {
 }
 
 button:hover {
-  background: #FBF0F0  ;
+  background: var(--buttonHoverColor);
 }
 
 
@@ -31,33 +45,44 @@ button:hover {
 }
 
 .App-header {
-  background-color: #2c3e50;
+  background-color: var(--AppHeaderColor);
   height: 25%;
   padding: 0;
   margin-bottom: 2rem;
 }
 
 .App-title {
-  font-size: 5em;
+  font-size: 2.5em;
   font-weight: 900;
   padding: 20px;
   position: relative;
-  color: #00acee;
+  color: var(--AppTitleColor);
   font-family: 'Concert One', cursive;
   z-index: 1;
+  text-align: left;
 }
 
 .App-title::before {
   content: "Yummy Recipes";
   position: absolute;
   top: 15px;
-  color: white;
+  color: var(--AppTitleFrontColor);
 }
 
+.search-container-heading {
+  padding: 1rem;
+}
 
+.results {
+  margin: 2rem;
+}
+
+.results-heading {
+  padding: 1.5rem;
+}
 
 .recipe__buttons {
-  border: solid 2px #e74c3c;
+  border: solid 2px var(--recipeButtonOutline);
   background: transparent;
   padding: 0.4rem 0.6rem;
   margin: 0 0.2rem;
@@ -77,12 +102,16 @@ button:hover {
   overflow: hidden;
 }
 
+.recipe__box-img {
+  object-fit: cover;
+}
+
 .recipe__text {
   margin-left: 15px;
 }
 
 .recipes__title {
-  color: #e74c3c;
+  color: var(--RecipesTitle);
   text-transform: uppercase;
   font-size: 1.1rem;
   padding: 1.8rem 0 0.2rem 0;
@@ -113,7 +142,7 @@ button:hover {
 }
 
 .form__button {
-  border: solid 2px #e74c3c;
+  border: solid 2px var(--formButtonOutline);
   background: #fff;
   padding: 0.2rem 0.9rem;
   margin: 0 0.2rem;
@@ -137,11 +166,14 @@ input:-webkit-autofill {
 
 .active-recipe {
   margin: 0 auto;
-  width: 60%;
+  width: 80%;
+  padding: 2rem;
 }
 
 .active-recipe__img {
   height: 500px !important;
+  border-radius: 1rem;
+  object-fit: cover;
 }
 
 .active-recipe__title {
@@ -163,13 +195,13 @@ input:-webkit-autofill {
   margin-left: 5px;
 }
 
-.active-recipe__website span {
+/*.active-recipe__website span {
   text-transform: lowercase;
   font-weight: 300;
   letter-spacing: 2px;
   color: #e74c3c;
   margin-left: 10px;
-}
+}*/
 
 .active-recipe__button {
   border: solid 2px #e74c3c;

@@ -20,16 +20,21 @@ class Recipe extends React.Component {
 		this.setState({
 			activeRecipe: res.hits[0].recipe
 		})
-		console.log(this.state.activeRecipe);
 
 	}
 
 	render()
 	{
 		const recipe = this.state.activeRecipe;
+		console.log(this.state.activeRecipe);
 
 		return (
-			<div className="container">
+			<div className="active-container">
+				    <div>
+		        		<header className="App-header">
+		          			<h1 className="App-title">Yummy Recipes</h1>
+		        		</header>
+	        		</div>
 				{/*Only render the items if the state is not empty*/}
 				{
 					this.state.activeRecipe.length !== 0 &&
@@ -38,15 +43,22 @@ class Recipe extends React.Component {
 						<img className="active-recipe__img" src={recipe.image} alt={recipe.label} />
 						<h3 className="active-recipe__title">{recipe.label}</h3>
 						<h4 className="active-recipe__publisher">Publisher: {recipe.source}</h4>
-						<p className="active-recipe__website">
-							Website: <span><a href={recipe.url}>{recipe.url}</a></span>
+						<p><b>Calories:</b> {Math.round(recipe.calories)}</p>
+						<p>
+							<b>Cautions:</b> {recipe.cautions.length === 0 ? "None" : recipe.cautions.map(caution => `${caution}, `)}
 						</p>
+						<p><b>Diet:</b> {recipe.dietLabels.length === 0 ? "None" : recipe.dietLabels}</p>
+						<p><b>Health:</b> {recipe.healthLabels.map(label => `${label}, `)}</p>
+						<p><b>Ingredients:</b> {recipe.ingredients.map((ingredient, index) => <li key={index}>{ingredient.text}</li>)}</p>
 						<button 
 							className="active-recipe__button"
 						>
 							<Link to="/">
 								BACK
 							</Link>
+						</button>
+						<button className="active-recipe__button">
+							<span><a href={recipe.url}>Recipe</a></span>
 						</button>
 					</div>
 				}

@@ -11,7 +11,8 @@ export const loadState = (state) => {
     }
 }
 
-export const saveState = (state) => {
-	const recipes = JSON.stringify(state);
-	localStorage.setItem("recipes", recipes);
+export const saveState = (state, key) => {
+	console.log(key);
+	const temp = JSON.stringify(state);
+	localStorage.setItem(key, temp);
 }

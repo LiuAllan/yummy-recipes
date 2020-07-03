@@ -24,7 +24,9 @@ const Recipes = (props) => (
 								{ recipe.recipe.label.length < 20 ? `${recipe.recipe.label}` : `${recipe.recipe.label.substring(0, 25)}...` }
 							</h5>
 							{/*input a slider here*/}
-							<p className="recipes__subtitle">Diet: {recipe.recipe.dietLabels}</p>
+							<p className="recipes__subtitle">Calories: {Math.round(recipe.recipe.calories)}</p>
+							<p className="recipes__subtitle">Diet: {recipe.recipe.dietLabels.length === 0 ? "None" : recipe.recipe.dietLabels}</p>
+							<p className="recipes__subtitle">Total Time: {recipe.recipe.totalTime === 0 ? "???" : recipe.recipe.totalTime} minutes</p>
 						</div>
 						<button className="recipe__buttons">
 							{/*Pass the state of props recipe into the Recipe component upon button click*/}
@@ -34,6 +36,13 @@ const Recipes = (props) => (
 							}}>
 								More Info
 							</Link>
+						</button>
+						<button className="recipe__buttons">
+							<span>
+								<a href={recipe.recipe.url}>Recipe</a>
+							</span>
+							
+								
 						</button>
 					</div>
 				</div>
