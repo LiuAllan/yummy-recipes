@@ -3,6 +3,8 @@ import './App.css';
 import Form from './components/Form';
 import Recipes from './components/Recipes';
 import {saveState} from './components/Storage';
+import Nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 
 const API_KEY = "9015daa8f46e3491af4d146a117aa860";
@@ -41,6 +43,7 @@ class App extends React.Component {
 	
 	//Grabs our stored item when web page is reloaded
 	async componentDidMount() {
+		Nprogress.start();
 		//Initial load of page
 		if(this.state.recipes.length === 0)
 		{
@@ -67,6 +70,8 @@ class App extends React.Component {
 	    		resultsText: searchText,
 	    	})
 	    }
+	    console.log(this.state.recipes);
+	    Nprogress.done();
 	}
 	
 

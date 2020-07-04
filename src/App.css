@@ -3,15 +3,18 @@
 
 :root
 {
-  --mainBackgroundColor: #f3f3f3;
+  --mainBackgroundColor: #57636A;
   --linkColor: #e74c3c !important;
-  --AppHeaderColor: #2c3e50;
-  --AppTitleColor: #00acee;
-  --AppTitleFrontColor: white;
+  --AppHeaderColor: #424B54;
+  --AppTitleColor: #e74c3c;
+  --AppTitleFrontColor: #fff;
   --RecipesTitle: #e74c3c;
+  --formButton: #424B54;
   --formButtonOutline: #e74c3c;
   --recipeButtonOutline: #e74c3c;
-  --buttonHoverColor: #FBF0F0;
+  --buttonHoverColor: #57636A;
+  --recipesBox: #424B54;
+  --activeRecipeButton: #424B54;
 }
 
 body {
@@ -71,10 +74,12 @@ button:hover {
 
 .search-container-heading {
   padding: 1rem;
+  color: white;
 }
 
 .results {
   margin: 2rem;
+  color: white;
 }
 
 .results-heading {
@@ -94,7 +99,7 @@ button:hover {
 }
 
 .recipes__box {
-  background: #fff;
+  background: var(--recipesBox);
   padding-bottom: 2rem;
   border-radius: 5px;
   box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
@@ -143,7 +148,7 @@ button:hover {
 
 .form__button {
   border: solid 2px var(--formButtonOutline);
-  background: #fff;
+  background: var(--formButton);
   padding: 0.2rem 0.9rem;
   margin: 0 0.2rem;
   border-radius: 1px;
@@ -151,6 +156,7 @@ button:hover {
   text-transform: uppercase;
   font-weight: 500;
   margin-left: 0.7rem;
+  color: #e74c3c;
 }
 
 input[type="text"] { 
@@ -168,12 +174,14 @@ input:-webkit-autofill {
   margin: 0 auto;
   width: 80%;
   padding: 2rem;
+  color: white;
 }
 
 .active-recipe__img {
   height: 500px !important;
   border-radius: 1rem;
   object-fit: cover;
+  box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
 }
 
 .active-recipe__title {
@@ -205,7 +213,7 @@ input:-webkit-autofill {
 
 .active-recipe__button {
   border: solid 2px #e74c3c;
-  background: transparent;
+  background: var(--activeRecipeButton);
   padding: 0.2rem 0.9rem;
   margin: 0 0.2rem;
   border-radius: 1px;
